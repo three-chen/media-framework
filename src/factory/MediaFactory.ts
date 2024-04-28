@@ -37,7 +37,7 @@ export class MediaFactory {
         'ffmpeg -f v4l2 -i /dev/video0 -f alsa -ac 2 -i hw:1,0 -c:v libx264 -preset veryfast -maxrate 3000k -bufsize 6000k -pix_fmt yuv420p -g 50 -r 30 -s 640x480 -c:a aac -b:a 160k -ac 2 -ar 44100 -f flv rtmp://localhost/live/livestream',
         cb
           ? cb
-          : (error: ExecException | null, stdout: string, stderr: string) => {
+          : (error, stdout: string, stderr: string) => {
               console.log('error', error)
               console.log('stdout', stdout)
               console.log('stderr', stderr)
@@ -48,7 +48,7 @@ export class MediaFactory {
         'ffmpeg -f dshow -i video="HP Wide Vision HD Camera":audio="麦克风阵列 (英特尔® 智音技术)" -c:v libx264 -preset veryfast -maxrate 3000k -bufsize 6000k -pix_fmt yuv420p -g 50 -r 30 -s 640x480 -c:a aac -b:a 160k -ac 2 -ar 44100 -f flv rtmp://localhost/live/livestream',
         cb
           ? cb
-          : (error: ExecException | null, stdout: string, stderr: string) => {
+          : (error, stdout: string, stderr: string) => {
               console.log('error', error)
               console.log('stdout', stdout)
               console.log('stderr', stderr)
@@ -62,7 +62,7 @@ export class MediaFactory {
         'ffmpeg -f x11grab -s 1920x1080 -i :0.0 -f alsa -ac 2 -i hw:1,0 -c:v libx264 -preset veryfast -maxrate 3000k -bufsize 6000k -pix_fmt yuv420p -g 50 -r 30 -c:a aac -b:a 160k -ac 2 -ar 44100 -f flv rtmp://localhost/live/livestream',
         cb
           ? cb
-          : (error: ExecException | null, stdout: string, stderr: string) => {
+          : (error, stdout: string, stderr: string) => {
               console.log('error', error)
               console.log('stdout', stdout)
               console.log('stderr', stderr)
@@ -73,7 +73,7 @@ export class MediaFactory {
         'ffmpeg -f gdigrab -i desktop -f dshow -i audio="麦克风阵列 (英特尔® 智音技术)" -c:v libx264 -preset veryfast -maxrate 3000k -bufsize 6000k -pix_fmt yuv420p -g 50 -r 30 -s 1920x1080 -c:a aac -b:a 160k -ac 2 -ar 44100 -f flv rtmp://localhost/live/livestream',
         cb
           ? cb
-          : (error: ExecException | null, stdout: string, stderr: string) => {
+          : (error, stdout: string, stderr: string) => {
               console.log('error', error)
               console.log('stdout', stdout)
               console.log('stderr', stderr)
@@ -128,7 +128,7 @@ export class MediaFactory {
         ],
         cb
           ? cb
-          : (error: ExecException | null, stdout: string, stderr: string) => {
+          : (error, stdout: string, stderr: string) => {
               console.log('error', error)
               console.log('stdout', stdout)
               console.log('stderr', stderr)
@@ -173,7 +173,7 @@ export class MediaFactory {
         // 'ffmpeg -f dshow -i video="HP Wide Vision HD Camera":audio="麦克风阵列 (英特尔® 智音技术)" -c:v libx264 -preset veryfast -maxrate 3000k -bufsize 6000k -pix_fmt yuv420p -g 50 -r 30 -s 640x480 -c:a aac -b:a 160k -ac 2 -ar 44100 -f flv rtmp://localhost/live/livestream',
         cb
           ? cb
-          : (error: ExecException | null, stdout: string, stderr: string) => {
+          : (error, stdout: string, stderr: string) => {
               console.log('error', error)
               console.log('stdout', stdout)
               console.log('stderr', stderr)
@@ -227,7 +227,7 @@ export class MediaFactory {
         // 'ffmpeg -f x11grab -s 1920x1080 -i :0.0 -f alsa -ac 2 -i hw:1,0 -c:v libx264 -preset veryfast -maxrate 3000k -bufsize 6000k -pix_fmt yuv420p -g 50 -r 30 -c:a aac -b:a 160k -ac 2 -ar 44100 -f flv rtmp://localhost/live/livestream',
         cb
           ? cb
-          : (error: ExecException | null, stdout: string, stderr: string) => {
+          : (error, stdout: string, stderr: string) => {
               console.log('error', error)
               console.log('stdout', stdout)
               console.log('stderr', stderr)
@@ -276,7 +276,7 @@ export class MediaFactory {
         // 'ffmpeg -f gdigrab -i desktop -f dshow -i audio="麦克风阵列 (英特尔® 智音技术)" -c:v libx264 -preset veryfast -maxrate 3000k -bufsize 6000k -pix_fmt yuv420p -g 50 -r 30 -s 1920x1080 -c:a aac -b:a 160k -ac 2 -ar 44100 -f flv rtmp://localhost/live/livestream',
         cb
           ? cb
-          : (error: ExecException | null, stdout: string, stderr: string) => {
+          : (error, stdout: string, stderr: string) => {
               console.log('error', error)
               console.log('stdout', stdout)
               console.log('stderr', stderr)
