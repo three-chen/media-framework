@@ -1,5 +1,6 @@
 import { DecoderHls } from 'media-hls'
 import { DecoderHttpflv } from 'media-httpflv'
+import { DecoderWebrtc } from 'media-webrtc'
 import type { DecodeProtocol, DecoderOptions, DecoderType } from './types'
 import { DecodeProtocolEnum } from './types'
 
@@ -16,6 +17,7 @@ export class Decoder {
       const protocols: DecodeProtocol[] = []
       if (DecoderHls.isSupported()) protocols.push(DecodeProtocolEnum.HLS)
       if (DecoderHttpflv.isSupported()) protocols.push(DecodeProtocolEnum.HTTPFLV)
+      if (DecoderWebrtc.isSupported()) protocols.push(DecodeProtocolEnum.WEBRTC)
       resolve(protocols)
     })
   }
@@ -25,14 +27,16 @@ export class Decoder {
     Decoder.videoElement = options.videoElement
     Decoder.audioElement = options.audioElement
     Decoder.protocol = options.protocol
+    console.log('Decode protocol: ', Decoder.protocol)
     switch (Decoder.protocol) {
       case DecodeProtocolEnum.HTTPFLV:
         Decoder.decoder = new DecoderHttpflv(Decoder.room, Decoder.videoElement)
-        console.log('protocol: ', Decoder.protocol)
         break
       case DecodeProtocolEnum.HLS:
         Decoder.decoder = new DecoderHls(Decoder.room, Decoder.videoElement)
-        console.log('protocol: ', Decoder.protocol)
+        break
+      case DecodeProtocolEnum.WEBRTC:
+        Decoder.decoder = new DecoderWebrtc(Decoder.room, Decoder.videoElement)
         break
       default:
         console.log('unknown protocol: ', Decoder.protocol)
