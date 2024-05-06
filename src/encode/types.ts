@@ -23,7 +23,7 @@ export enum EncodeProtocolEnum {
   WEBRTC = 'WEBRTC',
   SRT = 'SRT'
 }
-export type EncodeProtocol = keyof typeof EncodeProtocolEnum | '' // other protocol types
+export type EncodeProtocol = keyof typeof EncodeProtocolEnum // other protocol types
 
 export type EncoderOptions = {
   room: string

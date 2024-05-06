@@ -11,7 +11,7 @@ import { EncodeProtocolEnum } from './types'
 export class Encoder {
   public static plat: string = process.platform
   public static room: string = ''
-  public static protocol: EncodeProtocol = ''
+  public static protocol: EncodeProtocol = EncodeProtocolEnum.WEBRTC
   public static encoder: EncoderType | null = null
 
   public static async getSupportedProtocols(cb?: Function): Promise<EncodeProtocol[]> {

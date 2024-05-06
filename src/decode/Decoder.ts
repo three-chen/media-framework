@@ -9,7 +9,7 @@ export class Decoder {
   public static videoElement: HTMLVideoElement | undefined = undefined
   public static audioElement: HTMLAudioElement | undefined = undefined
   // 根据协议，动态切换 decoder
-  public static protocol: DecodeProtocol = ''
+  public static protocol: DecodeProtocol = DecodeProtocolEnum.WEBRTC
   public static decoder: DecoderType | null = null
 
   public static async getSupportedProtocols(): Promise<DecodeProtocol[]> {
@@ -44,6 +44,7 @@ export class Decoder {
     }
   }
 
-  // public static decoderHls = new DecoderHls()
-  // public static decoderHttpflv = new DecoderHttpflv(Decoder.url, Decoder.videoElement)
+  public static destroy() {
+    Decoder.decoder?.destroy()
+  }
 }

@@ -10,7 +10,7 @@ export enum DecodeProtocolEnum {
   WEBRTC = 'WEBRTC'
 }
 
-export type DecodeProtocol = keyof typeof DecodeProtocolEnum | '' // other protocol types
+export type DecodeProtocol = keyof typeof DecodeProtocolEnum // other protocol types
 
 export type DecoderOptions = {
   // decoder specific options
