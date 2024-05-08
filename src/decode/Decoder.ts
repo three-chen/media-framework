@@ -11,6 +11,8 @@ export class Decoder {
   // 根据协议，动态切换 decoder
   public static protocol: DecodeProtocol = DecodeProtocolEnum.WEBRTC
   public static decoder: DecoderType | null = null
+  public static httpFlvDecoder: DecoderHttpflv | null = null
+  public static hlsDecoder: DecoderHls | null = null
 
   public static async getSupportedProtocols(): Promise<DecodeProtocol[]> {
     return new Promise(resolve => {
@@ -30,9 +32,15 @@ export class Decoder {
     console.log('Decode protocol: ', Decoder.protocol)
     switch (Decoder.protocol) {
       case DecodeProtocolEnum.HTTPFLV:
+        // if (Decoder.httpFlvDecoder === null) {
+        //   Decoder.httpFlvDecoder = new DecoderHttpflv(Decoder.room, Decoder.videoElement)
+        // }
         Decoder.decoder = new DecoderHttpflv(Decoder.room, Decoder.videoElement)
         break
       case DecodeProtocolEnum.HLS:
+        // if (Decoder.hlsDecoder === null) {
+        //   Decoder.hlsDecoder = new DecoderHls(Decoder.room, Decoder.videoElement)
+        // }
         Decoder.decoder = new DecoderHls(Decoder.room, Decoder.videoElement)
         break
       case DecodeProtocolEnum.WEBRTC:
