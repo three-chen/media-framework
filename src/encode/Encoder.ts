@@ -60,7 +60,7 @@ export class Encoder {
     }
   }
 
-  public static async changeEncoder(options: { protocol?: EncodeProtocolEnum; room?: string }) {
+  public static async changeEncoderAndDestroy(options: { protocol?: EncodeProtocolEnum; room?: string }) {
     let change = false
     if (options.room && options.room !== Encoder.room) {
       Encoder.room = options.room
@@ -72,6 +72,21 @@ export class Encoder {
     }
     if (change) {
       Encoder.destroy()
+      Encoder.initEncoder()
+    }
+  }
+
+  public static async changeEncoderWithoutDestroy(options: { protocol?: EncodeProtocolEnum; room?: string }) {
+    let change = false
+    if (options.room && options.room !== Encoder.room) {
+      Encoder.room = options.room
+      change = true
+    }
+    if (options.protocol && options.protocol !== Encoder.protocol) {
+      Encoder.protocol = options.protocol
+      change = true
+    }
+    if (change) {
       Encoder.initEncoder()
     }
   }
